@@ -1,5 +1,6 @@
 package org.johnide.criminalintent;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -11,12 +12,14 @@ public class Crime {
     private UUID mId;
     private String mTitle;
     private Date mDate;
+    private String mDateFormat;
     private boolean mSolved;
 
     public Crime() {
         // Generate unique identifier
         mId = UUID.randomUUID();
         mDate = new Date();
+        mDateFormat = DateFormat.getDateInstance(DateFormat.FULL).format(mDate);
     }
 
     public UUID getId() {
@@ -31,8 +34,8 @@ public class Crime {
         this.mTitle = title;
     }
 
-    public Date getDate() {
-        return mDate;
+    public String getDate() {
+        return mDateFormat;
     }
 
     public void setDate(Date date) {
